@@ -1,0 +1,9 @@
+
+*~
+
+localsetup.mk
+*.bak
+*#
+.#*
+build
+*.parked

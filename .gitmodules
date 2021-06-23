@@ -1,0 +1,15 @@
+[submodule "bin_tvm"]
+	path = bin_tvm
+	url = https://github.com/tagion/bin_tvm.git
+[submodule "lib_tvm"]
+	path = lib_tvm
+	url = https://github.com/tagion/lib_tvm.git
+[submodule "lib_wasm"]
+	path = lib_wasm
+	url = https://github.com/tagion/lib_wasm.git
+[submodule "tagion_basic"]
+	path = tagion_basic
+	url = https://github.com/tagion/tagion_basic.git
+[submodule "tagion_utils"]
+	path = tagion_utils
+	url = https://github.com/tagion/tagion_utils.git
