@@ -35,13 +35,13 @@ help-main:
 	@echo "                 Don't! if you still haven't secured you files"
 	@echo
 
-include master.mk
+include builder.mk
 
 help: $(HELP)
 
 info: $(INFO)
 
-all: $(ALL)
+all: $(ALL) $(PROGRAM)
 
 subdate:
 	git submodule update --init --recursive
@@ -56,7 +56,11 @@ hard-reset:
 	git submodule foreach --recursive git reset --hard
 
 clean: $(CLEANER)
-	rm -fR build
-	${foreach submod,$(SUBMODULES), $(MAKE) -C $(submod) clean;}
+	rm -fR $(WAYS)
 
-proper: $(CLEAN) $(PROPER)
+proper: $(CLEANER) $(PROPER)
+
+test:
+	@echo $(DFILES)
+	@echo $(PROGRAM)
+	@echo $(MAIN_SRC)

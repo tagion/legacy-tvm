@@ -7,8 +7,6 @@ DCFLAGS+=$(addprefix -I$(MAINROOT)/,$(DINC))
 
 include setup.mk
 
--include $(REPOROOT)/dfiles.mk
-
 #BIN:=bin/
 LDCFLAGS+=$(LINKERFLAG)-L$(BINDIR)
 ARFLAGS:=rcs
@@ -21,9 +19,6 @@ BUILD?=$(REPOROOT)/build
 
 INCFLAGS=${addprefix -I,${INC}}
 
-#LIBRARY:=$(BIN)/$(LIBNAME)
-#LIBOBJ:=${LIBRARY:.a=.o};
-
 .SECONDARY: .touch
 
 ifdef COV
@@ -35,18 +30,8 @@ endif
 
 HELP+=help-build
 
-# help: $(HELP)
-# 	@echo "make lib       : Builds $(LIBNAME) library"
-# 	@echo
-# 	@echo "make unittest  : Run the unittests"
-# 	@echo
-
 help-build:
-	@echo "Usage "
-	@echo
-	@echo "make info      : Prints the Link and Compile setting"
-	@echo
-	@echo "make proper    : Clean all"
+	@echo "Usage bulder"
 	@echo
 	@echo "make PRECMD=   : Verbose mode"
 	@echo "                 make PRECMD= <tag> # Prints the command while executing"
@@ -58,28 +43,16 @@ ifndef DFILES
 include $(REPOROOT)/source.mk
 endif
 
-INFO+=info-build
-
-info-build:
+info:
 	@echo "WAYS    =$(WAYS)"
 	@echo "DFILES  =$(DFILES)"
-#	@echo "OBJS    =$(OBJS)"
 	@echo "LDCFLAGS =$(LDCFLAGS)"
 	@echo "DCFLAGS  =$(DCFLAGS)"
 	@echo "INCFLAGS =$(INCFLAGS)"
 	@echo "GIT_REVNO=$(GIT_REVNO)"
 	@echo "GIT_HASH =$(GIT_HASH)"
 
-include $(REPOROOT)/revision.mk
 
-ifndef DFILES
-lib: $(REVISION) dfiles.mk
-	$(MAKE) lib
-
-unittest: dfiles.mk
-	$(MAKE) unittest
-else
-lib: $(REVISION) $(LIBRARY)
 
 unittest: $(UNITTEST)
 	export LD_LIBRARY_PATH=$(LIBBRARY_PATH); $(UNITTEST)
@@ -87,7 +60,6 @@ unittest: $(UNITTEST)
 $(UNITTEST): $(LIBS) $(WAYS) $(DFILES)
 	$(PRECMD)$(DC) $(DCFLAGS) $(INCFLAGS) $(DFILES) $(TESTDCFLAGS) $(LDCFLAGS) $(OUTPUT)$@
 
-endif
 
 define LINK
 $(1): $(1).d $(LIBRARY)
@@ -104,15 +76,6 @@ makeway: ${WAYS}
 include $(REPOROOT)/makeway.mk
 $(eval $(foreach dir,$(WAYS),$(call MAKEWAY,$(dir))))
 
-%.touch:
-	@echo "########################################################################################"
-	@echo "## Create dir $(@D)"
-	$(PRECMD)mkdir -p $(@D)
-	$(PRECMD)touch $@
-
-
-#include $(DDOCBUILDER)
-
 $(LIBRARY): ${DFILES}
 	@echo "########################################################################################"
 	@echo "## Library $@"
@@ -124,11 +87,11 @@ install: $(INSTALL)
 CLEANER+=clean-build
 
 clean-build:
-#	rm -f $(LIBRARY)
-	rm -f ${OBJS}
 	rm -f $(UNITTEST) $(UNITTEST).o
-	rm -f $(REVISION)
-	rm -f dfiles.mk
 
-$(PROGRAMS):
-	$(DC) $(DCFLAGS) $(LDCFLAGS) $(OUTPUT) $@
+proper: $(CLEANER)
+
+ALL+=$(PROGRAM)
+
+$(PROGRAM): $(WAYS) $(DFILES) $(DMAIN)
+	$(DC) $(DCFLAGS) $(DFILES) $(DMAIN) $(LDCFLAGS) $(OUTPUT)$@

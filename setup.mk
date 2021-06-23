@@ -1,3 +1,7 @@
+MAIN:=tvm
+
+DMAIN:=bin_$(MAIN)/$(MAIN).d
+
 SCRIPTROOT:=${MAINROOT}/scripts/
 
 BINDIR:=$(MAINROOT)/build/bin/
@@ -8,4 +12,7 @@ PACKAGE+=$(MAINREPOT)/tagion_utils/
 PACKAGE+=$(MAINREPOT)/lib_wasm/
 PACKAGE+=$(MAINREPOT)/lib_tvm/
 
-DFLAGS+=${addprefix -I,$(PACKAGE)}
+PROGRAM:=$(BINDIR)/tvm
+
+WAYS+=$(BINDIR)
+WAYS+=$(LIBDIR)
