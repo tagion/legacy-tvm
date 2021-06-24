@@ -3,15 +3,12 @@ AR?=ar
 include $(REPOROOT)/command.mk
 
 
-DCFLAGS+=$(addprefix -I$(MAINROOT)/,$(DINC))
 
 include setup.mk
 
-#BIN:=bin/
 LDCFLAGS+=$(LINKERFLAG)-L$(BINDIR)
 ARFLAGS:=rcs
 BUILD?=$(REPOROOT)/build
-#SRC?=$(REPOROOT)
 
 .SECONDARY: $(TOUCHHOOK)
 .PHONY: makeway
@@ -94,4 +91,4 @@ proper: $(CLEANER)
 ALL+=$(PROGRAM)
 
 $(PROGRAM): $(WAYS) $(DFILES) $(DMAIN)
-	$(DC) $(DCFLAGS) $(DFILES) $(DMAIN) $(LDCFLAGS) $(OUTPUT)$@
+	${PRECMD}$(DC) $(INCFLAGS) $(DCFLAGS) $(DFILES) $(DMAIN) $(LDCFLAGS) $(OUTPUT)$@
