@@ -4,8 +4,6 @@ include $(REPOROOT)/command.mk
 
 
 
-include setup.mk
-
 LDCFLAGS+=$(LINKERFLAG)-L$(BINDIR)
 ARFLAGS:=rcs
 BUILD?=$(REPOROOT)/build
@@ -36,9 +34,7 @@ help-build:
 
 include $(MAINROOT)/libraries.mk
 
-ifndef DFILES
 include $(REPOROOT)/source.mk
-endif
 
 info:
 	@echo "WAYS    =$(WAYS)"

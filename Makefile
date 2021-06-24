@@ -64,3 +64,4 @@ test:
 	@echo $(DFILES)
 	@echo $(PROGRAM)
 	@echo $(MAIN_SRC)
+	@echo $(WAYS)
