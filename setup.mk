@@ -22,7 +22,6 @@ LDCFLAGS+=$(LIBWARM)
 LDCFLAGS+=-defaultlib=libphobos2.so
 
 $(LIBWARM):
-	$(MAKE) -f $(MAINROOT)/lib_tvm/wasm_lib.mk all
-	$(MAKE) -C $(MAINROOT)/lib_tvm/ dodi
+	cd $(MAINROOT)/lib_tvm/; make dodi; make -f wasm_lib.mk
 
 ALL+=$(LIBWARM)
