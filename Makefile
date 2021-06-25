@@ -37,6 +37,8 @@ help-main:
 
 include builder.mk
 
+include examples.mk
+
 help: $(HELP)
 
 info: $(INFO)
@@ -59,6 +61,7 @@ clean: $(CLEANER)
 	rm -fR $(WAYS)
 
 proper: $(CLEANER) $(PROPER)
+
 
 test:
 	@echo $(DFILES)

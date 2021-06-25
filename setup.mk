@@ -18,3 +18,4 @@ WAYS+=$(BINDIR)
 WAYS+=$(LIBDIR)
 
 LDCFLAGS+=$(MAINROOT)/lib_tvm/bin/libwarm.a
+LDCFLAGS+=-defaultlib=libphobos2.so
