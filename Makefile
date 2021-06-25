@@ -3,7 +3,6 @@ MAINROOT:=${shell git rev-parse --show-toplevel}
 include git.mk
 -include localsetup.mk
 include command.mk
-include setup.mk
 
 .PHONY: help
 
@@ -35,6 +34,8 @@ help-main:
 	@echo "                 Don't! if you still haven't secured you files"
 	@echo
 
+include setup.mk
+
 include builder.mk
 
 include examples.mk
@@ -43,7 +44,7 @@ help: $(HELP)
 
 info: $(INFO)
 
-all: $(ALL) $(PROGRAM)
+all: $(ALL)
 
 subdate:
 	git submodule update --init --recursive

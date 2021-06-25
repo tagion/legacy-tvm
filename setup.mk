@@ -17,5 +17,12 @@ PROGRAM:=$(BINDIR)/tvm
 WAYS+=$(BINDIR)
 WAYS+=$(LIBDIR)
 
-LDCFLAGS+=$(MAINROOT)/lib_tvm/bin/libwarm.a
+LIBWARM:=$(MAINROOT)/lib_tvm/bin/libwarm.a
+LDCFLAGS+=$(LIBWARM)
 LDCFLAGS+=-defaultlib=libphobos2.so
+
+$(LIBWARM):
+	$(MAKE) -f $(MAINROOT)/lib_tvm/wasm_lib.mk all
+	$(MAKE) -C $(MAINROOT)/lib_tvm/ dodi
+
+ALL+=$(LIBWARM)
