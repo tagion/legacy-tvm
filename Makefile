@@ -16,6 +16,10 @@ help-main:
 	@echo
 	@echo "make spush     : Pushes all submodules"
 	@echo
+	@echo "make branch-<branch>     : Creates a new <branch>"
+	@echo
+	@echo "make checkout-<branch>   : Checkout a new <branch>"
+	@echo
 	@echo "make install   : Runs make install for all submodules"
 	@echo
 	@echo "make all       : Build all"
@@ -54,6 +58,15 @@ spull:
 
 spush:
 	git push --recurse-submodules=on-demand
+
+checkout-%:
+	git submodule foreach --recursive git checkout $*
+	git checkout $*
+
+branch-%:
+	git submodule foreach --recursive git checkout -b $*
+	git checkout $*
+
 
 hard-reset:
 	git submodule foreach --recursive git reset --hard
