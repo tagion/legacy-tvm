@@ -44,7 +44,11 @@ The test example includes a `bin_tvm/tests/testapp/native_impl.d/` which compile
 
 The wasm-example gets `bin_tvm/tests/testapp/betterc/testapp.d`, which compiles to a `.wasm` file, and placed in `build/bin/testapp.wasm`.
 
-**./build/bin/tvm build/bin/testapp.wasm build/bin/libtestapp.so**
+```
+./build/bin/tvm
+./build/bin/testapp.wasm
+./build/bin/libtestapp.so
+```
 
 ### More information
 
