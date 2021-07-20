@@ -1,9 +1,11 @@
 
+TEST?=testapp
+
 run: all
-	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/testapp/ all
-	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/testapp/betterc all
-	$(PROGRAM) $(BINDIR)/libtestapp.so $(BINDIR)/testapp.wasm
+	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/$(TEST)/ all
+	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/$(TEST)/betterc all
+	$(PROGRAM) $(BINDIR)/lib$(TEST).so $(BINDIR)/$(TEST).wasm
 
 %-run:
-	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/testapp/ $*
-	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/testapp/betterc $*
+	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/$(TEST)/ $*
+	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/$(TEST)/betterc $*
