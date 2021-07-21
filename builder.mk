@@ -26,10 +26,12 @@ endif
 HELP+=help-build
 
 help-build:
-	@echo "Usage bulder"
+	@echo "Usage builder"
 	@echo
 	@echo "make PRECMD=   : Verbose mode"
 	@echo "                 make PRECMD= <tag> # Prints the command while executing"
+	@echo
+	@echo "make COV=      : Switch on code coverage"
 	@echo
 
 include $(MAINROOT)/libraries.mk

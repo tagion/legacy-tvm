@@ -9,3 +9,7 @@ run: all
 %-run:
 	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/$(TEST)/ $*
 	$(MAKE) BIN=$(BINDIR) -C bin_tvm/tests/$(TEST)/betterc $*
+
+
+# ddd:
+# 	make TEST="ddd $(TEST)" run

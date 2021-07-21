@@ -25,3 +25,12 @@ $(LIBWARM):
 	cd $(MAINROOT)/lib_tvm/; make dodi; make -f wasm_lib.mk
 
 ALL+=$(LIBWARM)
+
+ifdef DEBUG
+DCFLAGS+=-g
+endif
+
+help-setup:
+	@echo "make DEBUG=1    : Switch on the debug flag"
+	@echo
+HELP+=help-setup

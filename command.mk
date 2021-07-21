@@ -88,17 +88,17 @@ endif
 ifeq ($(COMPILER),ldc)
     DVERSION    = -d-version
     SONAME_FLAG = -soname
-    DEBUG       ?= -d-debug
+    D_DEBUG     := -d-debug
     DIP         := --dip
 else ifeq ($(COMPILER),gdc)
     DVERSION    = -fversion
     SONAME_FLAG = $(LINKERFLAG)-soname
-    DEBUG       ?= -f-d-debug
+    D_DEBUG  := -f-d-debug
     DIP         := unknown-dip
 else
     DVERSION    = -version
     SONAME_FLAG = $(LINKERFLAG)-soname
-    DEBUG       ?= -debug
+    D_DEBUG     := -debug
     DIP         := -dip
 endif
 
