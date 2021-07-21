@@ -39,6 +39,7 @@ help-main:
 	@echo
 
 include setup.mk
+include unittest_setup.mk
 
 include builder.mk
 
