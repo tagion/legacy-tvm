@@ -13,3 +13,6 @@
 [submodule "tagion_utils"]
 	path = tagion_utils
 	url = https://github.com/tagion/tagion_utils.git
+[submodule "tagion_hibon"]
+	path = tagion_hibon
+	url = https://github.com/tagion/tagion_hibon.git

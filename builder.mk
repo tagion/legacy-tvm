@@ -20,6 +20,8 @@ ifdef COV
 RUNFLAGS+=--DRT-covopt="merge:1 dstpath:reports"
 DCFLAGS+=-cov
 endif
+DCFLAGS+=$(DIP25) $(DIP1000)
+#$(DIP1018)
 
 
 

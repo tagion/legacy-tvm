@@ -21,6 +21,8 @@ LIBWARM:=$(MAINROOT)/lib_tvm/bin/libwarm.a
 LDCFLAGS+=$(LIBWARM)
 LDCFLAGS+=-defaultlib=libphobos2.so
 
+
+
 $(LIBWARM):
 	cd $(MAINROOT)/lib_tvm/; make dodi; make -f wasm_lib.mk
 

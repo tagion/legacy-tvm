@@ -104,6 +104,7 @@ endif
 
 DIP25   := $(DIP)25
 DIP1000 := $(DIP)1000
+DIP1018 := $(DIP)1018
 #DIP1021 := $(DIP)1021
 
 
