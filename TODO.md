@@ -70,3 +70,4 @@ assert(ret == -1*42);
 Make a example with a delegate. A delegate in D is function with a scope pointer.
 
 https://dlang.org/spec/function.html
+Check access
