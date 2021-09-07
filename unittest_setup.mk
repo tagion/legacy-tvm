@@ -1,8 +1,8 @@
 UNITTEST:=$(BINDIR)/uinttest_tvm
 
-TESTINC:=$(REPOROOT)/lib_tvm/tests/basic/d/
+TESTINC:=$(REPOROOT)/lib_tvm/
 TESTDCFLAGS+=-I$(TESTINC) #REPOROOT)/lib_tvm/tests/basic/d/
-TESTDCFLAGS+=$(TESTINC)/src/native_impl.d
+TESTDCFLAGS+=$(TESTINC)/tests/wasm_samples.d
 
 TESTDCFLAGS+=-g
 TESTDCFLAGS+=-main
